@@ -1,5 +1,6 @@
 asgiref==3.4.1
 click==8.0.1
+cmake==3.21.2
 colorama==0.4.4
 Django==3.2.7
 django-cors-headers==3.8.0
