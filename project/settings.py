@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t7t))r*0sqki#^9u&lnzmqh8kmtdc+qfwp7c@9kad4c%l1ppuw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['api.zenv.in', 'api-yami.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0', '15.206.112.24']
 

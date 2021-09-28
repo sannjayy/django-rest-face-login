@@ -8,17 +8,12 @@ class User(AbstractUser):
 
     @property
     def image_filename(self):
-        return os.path.basename(self.screen_lock_img.name)
-
-    @property
-    def screen_lock_img_url(self):
         try:
-            # url = self.screen_lock_img.url.replace('/', '\\')[1:]
-            url = self.screen_lock_img.url
+            return os.path.basename(self.screen_lock_img.name)
         except:
-            url = None
+            return None
 
-        return url
+
 
 class LoginAttempt(models.Model):
     username = models.CharField(max_length=50)
@@ -28,24 +23,10 @@ class LoginAttempt(models.Model):
     def __str__(self) -> str:
         return self.username
 
-
-    @property
-    def get_absolute_image_url(self):
-        return "{0}{1}".format(settings.MEDIA_URL, self.image.url)
-
-    @property
-    def image_filename(self):
-        return os.path.basename(self.image.name)
-
     @property
     def image_url(self):
         try:
-            # url = self.image.url.replace('/', '\\')[1:]
-            # url = self.image.url
             return os.path.basename(self.image.name)
-            
         except:
-            url = None
-
-        return url
+            return None
 
