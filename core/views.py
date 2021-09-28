@@ -59,12 +59,10 @@ class ImageRecognitionAWSView(generics.GenericAPIView):
         region_name = settings.AWS_REGION_NAME
 
         client = boto3.client('rekognition', region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
-        base_dir = settings.MEDIA_ROOT   
+        # base_dir = settings.MEDIA_ROOT   
         # my_file = os.path.join(base_dir, str(GDRAT.xls))
         image_db = user.screen_lock_img_url
         image_upload = image_url
-        os.chdir(image_db)
-        os.chdir(image_upload)
 
         with open(image_db, 'rb') as image_db_source_image:
             image_db_source_bytes = image_db_source_image.read()
