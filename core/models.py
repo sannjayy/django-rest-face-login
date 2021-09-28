@@ -7,9 +7,14 @@ class User(AbstractUser):
     screen_lock_img = models.ImageField(upload_to='security_images', null=True, blank=True)
 
     @property
+    def image_filename(self):
+        return os.path.basename(self.screen_lock_img.name)
+
+    @property
     def screen_lock_img_url(self):
         try:
-            url = '\\app\\'+self.screen_lock_img.url.replace('/', '\\')[1:]
+            # url = self.screen_lock_img.url.replace('/', '\\')[1:]
+            url = self.screen_lock_img.url
         except:
             url = None
 
@@ -28,11 +33,17 @@ class LoginAttempt(models.Model):
     def get_absolute_image_url(self):
         return "{0}{1}".format(settings.MEDIA_URL, self.image.url)
 
-        
+    @property
+    def image_filename(self):
+        return os.path.basename(self.image.name)
+
     @property
     def image_url(self):
         try:
-            url = '\\app\\'+self.image.url.replace('/', '\\')[1:]
+            # url = self.image.url.replace('/', '\\')[1:]
+            # url = self.image.url
+            return os.path.basename(self.image.name)
+            
         except:
             url = None
 

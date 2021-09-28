@@ -8,8 +8,16 @@ from .models import User, LoginAttempt
 from django.shortcuts import get_object_or_404
 import boto3
 import os
+from pathlib import Path
+
 
 from django.conf import settings
+
+# THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+# THIS_FOLDER = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'media'))
+
+
+
 # Create your views here.
 '''
 class ImageRecognitionView(generics.GenericAPIView):
@@ -61,9 +69,21 @@ class ImageRecognitionAWSView(generics.GenericAPIView):
         client = boto3.client('rekognition', region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
         # base_dir = settings.MEDIA_ROOT   
         # my_file = os.path.join(base_dir, str(GDRAT.xls))
-        image_db = user.screen_lock_img_url
-        image_upload = image_url
-
+        
+        # image_db = user.screen_lock_img_url
+        DB_IMG_FOLDER = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'media/security_images/'))
+        UPLOAD_IMG_FOLDER = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'media/uploaded_temp_images/'))
+        
+        image_db = os.path.join(DB_IMG_FOLDER,  user.image_filename)
+        # image_upload = image_url
+        image_upload = os.path.join(UPLOAD_IMG_FOLDER,  image_url)
+        
+        # print(THIS_FOLDER)
+        # print(user.image_filename)
+        # join_path = os.path.join(DB_IMG_FOLDER,  user.image_filename)
+        # print(join_path)
+        # print(user.image_filename)
+        # print(Path(image_db))   
         with open(image_db, 'rb') as image_db_source_image:
             image_db_source_bytes = image_db_source_image.read()
 
