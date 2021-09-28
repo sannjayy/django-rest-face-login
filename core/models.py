@@ -9,9 +9,7 @@ class User(AbstractUser):
     @property
     def screen_lock_img_url(self):
         try:
-            # url = self.screen_lock_img.url.replace('/', '\\')[1:]
-            base_dir = settings.MEDIA_ROOT   
-            url = 'https://api-yami.herokuapp.com'+str(self.screen_lock_img.url)
+            url = self.screen_lock_img.url.replace('/', '\\')[1:]
         except:
             url = None
 
