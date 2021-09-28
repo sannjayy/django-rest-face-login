@@ -9,7 +9,7 @@ class User(AbstractUser):
     @property
     def screen_lock_img_url(self):
         try:
-            url = self.screen_lock_img.url
+            url = self.screen_lock_img.url.replace('/', '\\')[1:]
         except:
             url = None
 
@@ -32,7 +32,7 @@ class LoginAttempt(models.Model):
     @property
     def image_url(self):
         try:
-            url = self.image.url
+            url = self.image.url.replace('/', '\\')[1:]
         except:
             url = None
 
