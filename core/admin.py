@@ -11,9 +11,9 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import Permission
 # from django.contrib.auth.models import User 
 
-admin.site.site_header = "Sumit Hero"
-admin.site.site_title = "Sumit Hero Admin Portal"
-admin.site.index_title = "Welcome to The Sumit Hero"
+admin.site.site_header = "Web Cam Auth"
+admin.site.site_title = "Web Cam Auth Admin Portal"
+admin.site.index_title = "Welcome to The Web Cam Auth"
 
 # User Creating Form
 class UserCreationForm(forms.ModelForm):
