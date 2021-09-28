@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t7t))r*0sqki#^9u&lnzmqh8kmtdc+qfwp7c@9kad4c%l1ppuw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['api.zenv.in', 'api-yami.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0', '15.206.112.24']
 
@@ -103,12 +103,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://yami.zenv.in",
 ]
 
 # AWS
 AWS_ACCESS_KEY_ID = 'AKIAUQBYMFHVC3X2EOJC'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_REGION_NAME = "ap-south-1"
-
-DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 1  # 1M
-FILE_UPLOAD_MAX_MEMORY_SIZE = DATA_UPLOAD_MAX_MEMORY_SIZE
