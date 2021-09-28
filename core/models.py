@@ -10,7 +10,8 @@ class User(AbstractUser):
     def screen_lock_img_url(self):
         try:
             # url = self.screen_lock_img.url.replace('/', '\\')[1:]
-            url = self.screen_lock_img
+            base_dir = settings.MEDIA_ROOT   
+            url = base_dir+self.screen_lock_img.url
         except:
             url = None
 
