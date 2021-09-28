@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ImageRecognitionView
+from .views import ImageRecognitionAWSView
 
 urlpatterns = [
-    path('login/', ImageRecognitionView.as_view(), name="face_login"),
+    path('auth', ImageRecognitionAWSView.as_view(), name="aws_face_login"),
 ]
