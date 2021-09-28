@@ -7,6 +7,8 @@ from .serializers import ImageRecognitionSerializer
 from .models import User, LoginAttempt
 from django.shortcuts import get_object_or_404
 import boto3
+import os
+
 from django.conf import settings
 # Create your views here.
 '''
@@ -41,6 +43,7 @@ class ImageRecognitionView(generics.GenericAPIView):
 class ImageRecognitionAWSView(generics.GenericAPIView):
     serializer_class = ImageRecognitionSerializer
     # parser_classes = (MultiPartParser, FormParser)
+    
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -56,7 +59,8 @@ class ImageRecognitionAWSView(generics.GenericAPIView):
         region_name = settings.AWS_REGION_NAME
 
         client = boto3.client('rekognition', region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
-
+        # base_dir = settings.MEDIA_ROOT   
+        # my_file = os.path.join(base_dir, str(GDRAT.xls))
         image_db = user.screen_lock_img_url
         image_upload = image_url
 

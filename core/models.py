@@ -9,7 +9,8 @@ class User(AbstractUser):
     @property
     def screen_lock_img_url(self):
         try:
-            url = self.screen_lock_img.url.replace('/', '\\')[1:]
+            # url = self.screen_lock_img.url.replace('/', '\\')[1:]
+            url = self.screen_lock_img
         except:
             url = None
 
