@@ -1,6 +1,7 @@
 from .models import User, LoginAttempt
 
 
+from django.utils.html import format_html
 
 from django.contrib import admin
 from django import forms
@@ -91,4 +92,11 @@ admin.site.register(Permission)
 
 
 # Register your models here.
-admin.site.register(LoginAttempt)
+# admin.site.register(LoginAttempt)
+
+@admin.register(LoginAttempt) 
+class LoginAttemptAdmin(admin.ModelAdmin):
+    list_display = ('username', 'image_tag', 'uploaded_at',)
+
+    def image_tag(self, obj):
+        return format_html(f'<img height="50" src="{obj.image.url}" />')

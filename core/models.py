@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import os, uuid
-from django.conf import settings
+import os
 
 class User(AbstractUser):
     screen_lock_img = models.ImageField(upload_to='security_images', null=True, blank=True)

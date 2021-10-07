@@ -1,6 +1,8 @@
 import cv2
 import face_recognition
 
+
+# Open CV Image Compare [Alter Native Method]
 def image_comparison(db_img, post_img):
     img = cv2.imread(db_img)
     rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

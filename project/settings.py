@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t7t))r*0sqki#^9u&lnzmqh8kmtdc+qfwp7c@9kad4c%l1ppuw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['api.zenv.in', 'api-yami.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0', '15.206.112.24']
 
@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     # Apps
     'core',
-    
 ]
 
 MIDDLEWARE = [
@@ -90,9 +89,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [ 
     BASE_DIR / 'static',
 ]
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-STATIC_ROOT = BASE_DIR / "static/staticfiles"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -107,6 +103,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # AWS
-AWS_ACCESS_KEY_ID = 'AKIAUQBYMFHVC3X2EOJC'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAUQBYMFHVC3X2EOJC' # Development only, Do not use this key on production
+AWS_SECRET_ACCESS_KEY = '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' # Development only, Do not use this key on production
 AWS_REGION_NAME = "ap-south-1"

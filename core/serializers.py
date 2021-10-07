@@ -39,9 +39,7 @@ class Base64ImageField(serializers.ImageField):
             file_name = str(uuid.uuid4())[:12] # 12 characters are more than enough.
             # Get the file name extension:
             file_extension = self.get_file_extension(file_name, decoded_file)
-
             complete_file_name = "%s.%s" % (file_name, file_extension, )
-
             data = ContentFile(decoded_file, name=complete_file_name)
 
         return super(Base64ImageField, self).to_internal_value(data)
@@ -55,41 +53,8 @@ class Base64ImageField(serializers.ImageField):
         return extension
 
 class ImageRecognitionSerializer(serializers.HyperlinkedModelSerializer):
-    # user_image = serializers.ImageField()
-    # photo_url = serializers.SerializerMethodField()
-    # photo_url = serializers.SerializerMethodField()
-    # image = serializers.FileField(required=False, validators=[file_size])
-    image = Base64ImageField( max_length=None, use_url=True, validators=[file_size])
-    # blob_img = serializers.SerializerMethodField()
+    image = Base64ImageField(max_length=None, use_url=True, validators=[file_size])
     class Meta:
         model = LoginAttempt
         fields= ('username', 'image', 'image_url')
     
-    # def clean(self):
-    #     image = self.cleaned_data.get('image')
-    #     # 5MB - 5242880
-    #     # 5MB - 5242880
-    #     if org_image._size > 5242880:            
-    #         self._errors["image"] = ErrorList([u"Image too heavy."])
-    
-
-    # def get_photo_url(self, obj):
-    #         request = self.context.get('request')
-          
-    #         photo_url = obj.image.url
-    #         return request.build_absolute_uri(photo_url)
-           
-    # def validate(self, attrs):
-    #     image = attrs.get('image', '')
-    #     print(image)
-    # def get_photo_url(self, obj):
-    #     request = self.context.get('request')
-    #     print(obj['image'].url)
-    #     # photo_url = obj.image.url
-    #     # return request.build_absolute_uri(photo_url)
-    #     pass
-
-    # def create(self, validated_data):
-    #     image = validated_data['image']
-    #     print(image)
-    #     return True
